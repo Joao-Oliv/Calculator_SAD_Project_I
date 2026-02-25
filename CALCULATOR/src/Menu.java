@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu 
@@ -35,7 +36,7 @@ public class Menu
 
                 case 1:
 
-                    System.out.println("Sum");
+                    this.getSum();
                     break;
 
                 case 2:
@@ -68,4 +69,38 @@ public class Menu
 
         scanner.close();
     }
+    
+
+    public void getSum()
+    {
+        Scanner iterator = new Scanner(System.in);
+        Scanner noYesNav = new Scanner(System.in);
+        int firstNumber, secondNumber;
+        String noYes;
+        boolean isValid = true;
+
+        do
+        {        
+            System.out.println("Type the numbers do you want sum:");
+
+            firstNumber = iterator.nextInt();
+
+            System.out.println("Type the second number");
+
+            secondNumber = iterator.nextInt();        
+                
+            System.out.println(firstNumber + " + " + secondNumber  + " = " + firstNumber+secondNumber);        
+            
+            do
+            {
+                System.out.println("Want sum again?[Y/N]");                    
+
+                noYes = noYesNav.next().toUpperCase();
+
+            } while (!noYes.equals("N"));
+        
+        } while(noYes != "N");
+        
+        //iterator.close();
+    } 
 }
