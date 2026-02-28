@@ -1,32 +1,36 @@
 import java.util.List;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Menu 
 {
-    public void run()
-    {
-        System.out.println("------------------------------------------------------------");
-        System.out.println("Welcome to calculator!");
-        System.out.println("Please, select one option:");
-        System.out.println("1. Sum");
-        System.out.println("2. Less");
-        System.out.println("3. Multiple");
-        System.out.println("4. Divider");
-        System.out.println("5. Squared");
-        System.out.println("0. Exit");
-        System.out.println("-------------------------------------------------------------");
+    Scanner iterator = new Scanner(System.in);
+    Scanner noYesNav = new Scanner(System.in);
     
+    public void run()
+    {  
         this.navegator();
     }
 
     public void navegator()
     {
-        Scanner scanner = new Scanner(System.in);
+        Scanner navegator = new Scanner(System.in);        
         int iterator;
-        
+
         do
-        {
-            iterator   = scanner.nextInt();
+        {                                                
+            System.out.println("------------------------------------------------------------");
+            System.out.println("Welcome to calculator!");
+            System.out.println("Please, select one option:");
+            System.out.println("1. Sum");
+            System.out.println("2. Less");
+            System.out.println("3. Multiple");
+            System.out.println("4. Divider");
+            System.out.println("5. Squared");
+            System.out.println("0. Exit");
+            System.out.println("-------------------------------------------------------------");
+           
+            iterator = navegator.nextInt();
 
             switch (iterator) {
                 case 0:
@@ -56,7 +60,7 @@ public class Menu
 
                 case 5:
 
-                    System.out.println("Square");
+                    this.getSquare();
                     break;
 
                 default:
@@ -66,21 +70,17 @@ public class Menu
             }
 
         }while(iterator != 0);
-
-        scanner.close();
     }
     
 
     public void getSum()
     {
-        Scanner iterator = new Scanner(System.in);
-        Scanner noYesNav = new Scanner(System.in);
         int firstNumber, secondNumber, result;
         String noYes;
         boolean isValid = true;
-
+         
         do
-        {        
+        {
             System.out.println("Type the numbers do you want sum:");
 
             firstNumber = iterator.nextInt();
@@ -90,31 +90,22 @@ public class Menu
             secondNumber = iterator.nextInt();      
             result       = firstNumber + secondNumber;  
                 
-            System.out.println(firstNumber + " + " + secondNumber  + " = " + result);        
+            System.out.println(firstNumber + " + " + secondNumber  + " = " + result);                                     
+            System.out.println("Want sum again?[Y/N]");
             
-            do
-            {
-                System.out.println("Want sum again?[Y/N]");                    
+            noYes = noYesNav.next().toUpperCase();
 
-                noYes = noYesNav.next().toUpperCase();
-
-            } while (!noYes.equals("N"));
-        
-        } while(noYes != "N");
-        
-        iterator.close();
+        } while (!noYes.equals("N"));            
     }
     
     public void getLess()
     {
-        Scanner iterator = new Scanner(System.in);
-        Scanner noYesNav = new Scanner(System.in);
         int firstNumber, secondNumber, result;
         String noYes;
-        boolean isValid = true;
-
+        boolean isValid = true;      
+        
         do
-        {        
+        {                     
             System.out.println("Type the numbers do you want less:");
 
             firstNumber = iterator.nextInt();
@@ -124,69 +115,48 @@ public class Menu
             secondNumber = iterator.nextInt();        
             result       = firstNumber-secondNumber;
 
+            System.out.println(firstNumber + " - " + secondNumber  + " = " + result);  
+            System.out.println("Want sum again?[Y/N]");                    
 
-            System.out.println(firstNumber + " - " + secondNumber  + " = " + result);        
-            
-            do
-            {
-                System.out.println("Want sum again?[Y/N]");                    
+            noYes = noYesNav.next().toUpperCase();
 
-                noYes = noYesNav.next().toUpperCase();
-
-            } while (!noYes.equals("N"));
-        
-        } while(noYes != "N");
-        
-        iterator.close();
+        } while (!noYes.equals("N"));            
     }
 
     public void getMultiple()
     {
-        Scanner iterator = new Scanner(System.in);
-        Scanner noYesNav = new Scanner(System.in);
         int firstNumber, secondNumber, result;
         String noYes;
-        boolean isValid = true;
-
+        boolean isValid = true;       
+        
         do
-        {        
+        {
             System.out.println("Type the numbers do you want multiple:");
 
-            firstNumber = iterator.nextInt();
+             firstNumber = iterator.nextInt();
 
             System.out.println("Type the second number");
 
             secondNumber = iterator.nextInt();        
             result       = firstNumber * secondNumber;
 
+            System.out.println(firstNumber + " * " + secondNumber  + " = " + result); 
+            System.out.println("Want sum again?[Y/N]");                    
 
-            System.out.println(firstNumber + " * " + secondNumber  + " = " + result);        
-            
-            do
-            {
-                System.out.println("Want sum again?[Y/N]");                    
+            noYes = noYesNav.next().toUpperCase();
 
-                noYes = noYesNav.next().toUpperCase();
-
-            } while (!noYes.equals("N"));
-        
-        } while(noYes != "N");
-        
-        iterator.close();
+        } while (!noYes.equals("N"));
     }
 
     public void getDivide()
     {
-        Scanner iterator = new Scanner(System.in);
-        Scanner noYesNav = new Scanner(System.in);
-        int firstNumber, secondNumber;
-        float result;
+        float firstNumber, secondNumber, result;;    
         String noYes;
         boolean isValid = true;
-
+               
         do
-        {        
-            System.out.println("Type the numbers do you want sum:");
+        {
+            System.out.println("Type the numbers do you want to divide:");
 
             firstNumber = iterator.nextInt();
 
@@ -195,19 +165,35 @@ public class Menu
             secondNumber = iterator.nextInt();        
             result       = firstNumber / secondNumber;
 
-
             System.out.println(firstNumber + " - " + secondNumber  + " = " + result);        
+            System.out.println("Want sum again?[Y/N]");                    
+
+            noYes = noYesNav.next().toUpperCase();
+
+        } while (!noYes.equals("N"));
+             
+    }
+
+    public void getSquare()
+    {
+        int firstNumber, result;
+        String noYes;
+        boolean isValid = true;
+      
+        do
+        {
+            System.out.println("Type the numbers do you want elevate to square:");
+
+            firstNumber = iterator.nextInt();
+            result      = firstNumber * firstNumber;
+
+            System.out.println(firstNumber + " elevate "  + " = " + result);        
             
-            do
-            {
-                System.out.println("Want sum again?[Y/N]");                    
+            
+            System.out.println("Want sum again?[Y/N]");                    
 
-                noYes = noYesNav.next().toUpperCase();
+            noYes = noYesNav.next().toUpperCase();
 
-            } while (!noYes.equals("N"));
-        
-        } while(noYes != "N");
-        
-        iterator.close();
+        } while (!noYes.equals("N"));        
     }
 }
